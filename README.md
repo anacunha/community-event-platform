@@ -1,4 +1,30 @@
-# React + TypeScript + Vite
+# Community Event Platform
+
+## [Create Application](https://vite.dev/guide/#scaffolding-your-first-vite-project)
+
+```shell
+npm create vite@latest
+```
+
+```shell
+✔ Project name: … community-event-platform
+✔ Select a framework: › React
+✔ Select a variant: › TypeScript
+```
+
+```shell
+cd community-event-platform
+npm install
+npm run dev
+```
+
+## [Configure Amplify](https://docs.amplify.aws/react/start/manual-installation/)
+
+```shell
+npm create amplify@latest
+```
+
+--------
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
