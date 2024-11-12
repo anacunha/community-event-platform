@@ -24,6 +24,23 @@ npm run dev
 npm create amplify@latest
 ```
 
+## [Deploy Dev Environment](https://docs.amplify.aws/react/deploy-and-host/sandbox-environments/setup/)
+
+```shell
+npx ampx sandbox
+```
+
+## [Configure Amplify](https://docs.amplify.aws/react/start/connect-to-aws-resources/)
+
+On `src/main.ts`:
+
+```typescript
+import { Amplify } from "aws-amplify"
+import outputs from "../amplify_outputs.json"
+
+Amplify.configure(outputs)
+```
+
 --------
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
