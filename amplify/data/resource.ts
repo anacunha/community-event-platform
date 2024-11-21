@@ -9,7 +9,10 @@ const schema = a.schema({
     })
     .returns(a.string())
     .handler(a.handler.function(sayHello))
-    .authorization(allow => [allow.guest()]),
+    .authorization(allow => [
+      allow.guest(),
+      allow.authenticated(),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -17,6 +20,6 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'iam',
+    defaultAuthorizationMode: 'userPool',
   },
 });
