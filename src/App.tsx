@@ -1,4 +1,3 @@
-import './App.css';
 import { generateClient } from 'aws-amplify/api';
 import type { Schema } from '../amplify/data/resource';
 import { useState } from 'react';
