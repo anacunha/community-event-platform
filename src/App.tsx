@@ -2,7 +2,9 @@ import { generateClient } from 'aws-amplify/api';
 import type { Schema } from '../amplify/data/resource';
 import { useState } from 'react';
 
-const client = generateClient<Schema>();
+const client = generateClient<Schema>({
+  authMode: 'userPool',
+});
 
 function App() {
   const [greeting, setGreeting] = useState<string | null>(null);
