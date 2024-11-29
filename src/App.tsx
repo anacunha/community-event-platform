@@ -1,6 +1,7 @@
 import { generateClient } from 'aws-amplify/api';
 import type { Schema } from '../amplify/data/resource';
 import { useState } from 'react';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 const client = generateClient<Schema>({
   authMode: 'userPool',
@@ -22,11 +23,13 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Event</h1>
-      <button onClick={sayHello}>Say Hello</button>
-      <div>{ greeting }</div>
-    </div>
+    <>
+      <Authenticator>
+        <h1>Event</h1>
+        <button onClick={sayHello}>Say Hello</button>
+        <div>{ greeting }</div>
+      </Authenticator>
+    </>
   )
 }
 
