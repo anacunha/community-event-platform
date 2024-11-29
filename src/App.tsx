@@ -10,7 +10,7 @@ const client = generateClient<Schema>({
 function App() {
   const [greeting, setGreeting] = useState<string | null>(null);
 
-  const sayHello = async () => {
+  async function sayHello() {
     const { data, errors } = await client.queries.sayHello({
       name: window.prompt('What is your name?'),
     });
@@ -23,13 +23,16 @@ function App() {
   }
 
   return (
-    <>
-      <Authenticator>
-        <h1>Event</h1>
-        <button onClick={sayHello}>Say Hello</button>
-        <div>{ greeting }</div>
-      </Authenticator>
-    </>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <main>
+          <h1>{user?.signInDetails?.loginId}</h1>
+          <button onClick={signOut}>Sign out</button>
+          <button onClick={sayHello}>Say Hello</button>
+          <div>{greeting}</div>
+        </main>
+      )}
+    </Authenticator>
   )
 }
 
