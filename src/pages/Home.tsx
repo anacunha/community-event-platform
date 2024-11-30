@@ -23,6 +23,16 @@ function App() {
   }
 
   const formFields = {
+    signIn: {
+      username: {
+        placeholder: '',
+        isRequired: true,
+      },
+      password: {
+        placeholder: '',
+        isRequired: true,
+      },
+    },
     signUp: {
       family_name: {
         placeholder: '',
