@@ -13,6 +13,20 @@ const schema = a.schema({
       allow.guest(),
       allow.authenticated(),
     ]),
+  Session: a
+    .model({
+      title: a.string(),
+      description: a.string(),
+      additionalInfo: a.string(),
+      accessibilityRequest: a.boolean(),
+      assistanceToAttend: a.boolean(),
+      underrepresented: a.boolean(),
+      level: a.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED']),
+      status: a.enum(['IN_REVIEW', 'ACCEPTED', 'DECLINED']),
+    })
+    .authorization(allow => [
+      allow.owner(),
+    ])
 });
 
 export type Schema = ClientSchema<typeof schema>;
