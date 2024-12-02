@@ -6,6 +6,7 @@ import outputs from '../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css';
 import { ThemeProvider } from '@aws-amplify/ui-react';
 import { theme } from './theme.ts';
+import "./index.css";
 
 Amplify.configure(outputs)
 

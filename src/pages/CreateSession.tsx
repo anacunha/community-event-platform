@@ -1,12 +1,19 @@
+import { Authenticator } from '@aws-amplify/ui-react';
 import { SessionCreateForm } from '../../ui-components';
+import { Header } from '../components';
 
 function CreateSession() {
 
   return (
-    <>
-      <h1>Create Session</h1>
-      <SessionCreateForm />
-    </>
+    <Authenticator>
+      {({ signOut }) => (
+        <main>
+          <Header signOut={signOut} />
+          <h1>Create Session</h1>
+          <SessionCreateForm />
+        </main>
+      )}
+    </Authenticator>
   );
 }
 

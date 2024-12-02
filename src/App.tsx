@@ -9,6 +9,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/session/new" element={<CreateSession />} />
+      <Route path="/sessions" element={<Dashboard />} />
+      <Route path="/profile" element={<Dashboard />} />
     </Routes>
   </BrowserRouter>
   )
