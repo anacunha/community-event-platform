@@ -7,7 +7,7 @@ const client = generateClient<Schema>({
   authMode: 'userPool',
 });
 
-function App() {
+function Home() {
   const [greeting, setGreeting] = useState<string | null>(null);
 
   async function sayHello() {
@@ -111,4 +111,4 @@ function App() {
   )
 }
 
-export default App
+export default Home

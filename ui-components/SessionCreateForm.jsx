@@ -12,7 +12,9 @@ import {
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createSession } from "./graphql/mutations";
-const client = generateClient();
+const client = generateClient({
+  authMode: 'userPool',
+});
 export default function SessionCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -32,7 +34,7 @@ export default function SessionCreateForm(props) {
     assistanceToAttend: false,
     underrepresented: false,
     level: "",
-    status: "",
+    status: "IN_REVIEW",
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [description, setDescription] = React.useState(
@@ -64,14 +66,17 @@ export default function SessionCreateForm(props) {
     setStatus(initialValues.status);
     setErrors({});
   };
+  const required = {
+    type: "Required",
+  }
   const validations = {
-    title: [],
-    description: [],
-    additionalInfo: [],
-    accessibilityRequest: [],
-    assistanceToAttend: [],
-    underrepresented: [],
-    level: [],
+    title: [required],
+    description: [required],
+    additionalInfo: [required],
+    accessibilityRequest: [required],
+    assistanceToAttend: [required],
+    underrepresented: [required],
+    level: [required],
     status: [],
   };
   const runValidationTasks = async (
@@ -396,53 +401,6 @@ export default function SessionCreateForm(props) {
           children="Advanced"
           value="ADVANCED"
           {...getOverrideProps(overrides, "leveloption2")}
-        ></option>
-      </SelectField>
-      <SelectField
-        label="Status"
-        placeholder="Please select an option"
-        isDisabled={false}
-        value={status}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              title,
-              description,
-              additionalInfo,
-              accessibilityRequest,
-              assistanceToAttend,
-              underrepresented,
-              level,
-              status: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.status ?? value;
-          }
-          if (errors.status?.hasError) {
-            runValidationTasks("status", value);
-          }
-          setStatus(value);
-        }}
-        onBlur={() => runValidationTasks("status", status)}
-        errorMessage={errors.status?.errorMessage}
-        hasError={errors.status?.hasError}
-        {...getOverrideProps(overrides, "status")}
-      >
-        <option
-          children="In review"
-          value="IN_REVIEW"
-          {...getOverrideProps(overrides, "statusoption0")}
-        ></option>
-        <option
-          children="Accepted"
-          value="ACCEPTED"
-          {...getOverrideProps(overrides, "statusoption1")}
-        ></option>
-        <option
-          children="Declined"
-          value="DECLINED"
-          {...getOverrideProps(overrides, "statusoption2")}
         ></option>
       </SelectField>
       <Flex

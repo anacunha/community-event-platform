@@ -15,12 +15,12 @@ const schema = a.schema({
     ]),
   Session: a
     .model({
-      title: a.string(),
-      description: a.string(),
+      title: a.string().required(),
+      description: a.string().required(),
       additionalInfo: a.string(),
-      accessibilityRequest: a.boolean(),
-      assistanceToAttend: a.boolean(),
-      underrepresented: a.boolean(),
+      accessibilityRequest: a.boolean().required(),
+      assistanceToAttend: a.boolean().required(),
+      underrepresented: a.boolean().required(),
       level: a.enum(['BEGINNER', 'INTERMEDIATE', 'ADVANCED']),
       status: a.enum(['IN_REVIEW', 'ACCEPTED', 'DECLINED']),
     })
