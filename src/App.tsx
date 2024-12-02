@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { CreateSession, Home } from './pages';
+import { CreateSession, Dashboard, Home } from './pages';
 
 function App() {
 
@@ -7,6 +7,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/session/new" element={<CreateSession />} />
     </Routes>
   </BrowserRouter>
