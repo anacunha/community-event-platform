@@ -48,8 +48,3 @@ export const listSessions = /* GraphQL */ `
     }
   }
 `;
-export const sayHello = /* GraphQL */ `
-  query SayHello($name: String) {
-    sayHello(name: $name)
-  }
-`;

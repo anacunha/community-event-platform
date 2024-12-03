@@ -1,26 +1,7 @@
-import { generateClient } from 'aws-amplify/api';
-import type { Schema } from '../../amplify/data/resource';
-import { useState } from 'react';
 import { Authenticator, Flex, Heading, Image, useTheme, View } from '@aws-amplify/ui-react';
 
-const client = generateClient<Schema>({
-  authMode: 'userPool',
-});
-
 function Home() {
-  const [greeting, setGreeting] = useState<string | null>(null);
-
-  async function sayHello() {
-    const { data, errors } = await client.queries.sayHello({
-      name: window.prompt('What is your name?'),
-    });
-
-    if (!errors) {
-      setGreeting(data);
-    } else {
-      console.log(errors);
-    }
-  }
+  const { tokens } = useTheme();
 
   const formFields = {
     signIn: {
@@ -67,8 +48,6 @@ function Home() {
     },
   }
 
-  const { tokens } = useTheme();
-
   const components = {
     Header() {
       return (
@@ -103,8 +82,6 @@ function Home() {
           <main>
             <h1>{user?.signInDetails?.loginId}</h1>
             <button onClick={signOut}>Sign out</button>
-            <button onClick={sayHello}>Say Hello</button>
-            <div>{greeting}</div>
           </main>
         )}
       </Authenticator>
