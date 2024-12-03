@@ -43,7 +43,7 @@ export default function Header({ signOut }: { signOut?: () => void; }) {
         position="relative"
         whiteSpace="pre-wrap"
       >
-        <Link color="#FFF" to="/dashboard">Dashboard</Link>
+        <Link color="#FFF" to="/">Dashboard</Link>
       </Text>
       <Text
         fontSize="16px"
