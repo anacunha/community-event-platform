@@ -83,7 +83,6 @@ export default function Header({ signOut }: { signOut?: () => void; }) {
       <Button
         shrink="0"
         backgroundColor="#A28EDB"
-        size="default"
         isDisabled={false}
         variation="primary"
         onClick={signOut}

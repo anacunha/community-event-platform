@@ -24,7 +24,13 @@ export function formatSessionStatus(status: string | null | undefined): string {
   return formattedStatus;
 }
 
-function getStatusBadgeVariation(status: string | null | undefined): string {
+// Define the correct type for badge variations
+type BadgeVariations = 'info' | 'error' | 'warning' | 'success';
+
+// Define the possible session statuses
+type SessionStatus = 'IN_REVIEW' | 'ACCEPTED' | 'DECLINED';
+
+function getStatusBadgeVariation(status: SessionStatus | null | undefined): BadgeVariations {
   if (!status) return 'info';
 
   switch (status) {
@@ -82,7 +88,7 @@ export default function DataRow({ session }: DataRowProps) {
     </Text>
     <Badge
     size="large"
-    variation={getStatusBadgeVariation(session.status)}
+    variation={getStatusBadgeVariation(session.status as SessionStatus)}
   >
     {formatSessionStatus(session.status)}
   </Badge>
