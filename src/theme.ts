@@ -2254,7 +2254,7 @@ export const theme = createTheme({
               "value": "{fontSizes.xxxxl.value}"
             },
             "fontWeight": {
-              "value": "{fontWeights.light.value}"
+              "value": "{fontWeights.medium.value}"
             }
           },
           "2": {

@@ -31,7 +31,6 @@ export default function Header({ signOut }: { signOut?: () => void; }) {
         objectFit="cover"
         alt=""
         src='/logo.svg'
-        style={{fill: 'white'}}
       />
       <Text
         fontSize="16px"
