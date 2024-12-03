@@ -1,4 +1,4 @@
-import { Flex, Text, Button } from '@aws-amplify/ui-react';
+import { Flex, Text, Button, Badge } from '@aws-amplify/ui-react';
 import { Schema } from '../../amplify/data/resource';
 
 // Define props interface using the Schema type
@@ -6,11 +6,38 @@ interface DataRowProps {
   session: Schema['Session']['type'];
 }
 
-function capitalizeFirstLetter(string: string): string {
-  if (!string) return string;
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+function capitalizeFirstLetter(string: string | null | undefined): string {
+  const safeString = string ?? ''; // Use empty string as fallback
+  return safeString.charAt(0).toUpperCase() + safeString.slice(1).toLowerCase();
 }
 
+export function formatSessionStatus(status: string | null | undefined): string {
+  if (!status) return '';
+
+  // Convert from SNAKE_CASE to Title Case
+  const formattedStatus = status
+    .toLowerCase()
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  return formattedStatus;
+}
+
+function getStatusBadgeVariation(status: string | null | undefined): string {
+  if (!status) return 'info';
+
+  switch (status) {
+    case 'ACCEPTED':
+      return 'success';
+    case 'IN_REVIEW':
+      return 'info';
+    case 'DECLINED':
+      return 'error';
+    default:
+      return 'info';
+  }
+}
 
 export default function DataRow({ session }: DataRowProps) {
 
@@ -53,6 +80,12 @@ export default function DataRow({ session }: DataRowProps) {
     >
       {capitalizeFirstLetter(session.level)}
     </Text>
+    <Badge
+    size="large"
+    variation={getStatusBadgeVariation(session.status)}
+  >
+    {formatSessionStatus(session.status)}
+  </Badge>
     <Button
       shrink="0"
       size="small"

@@ -56,7 +56,7 @@ export default function Header({ signOut }: { signOut?: () => void; }) {
         position="relative"
         whiteSpace="pre-wrap"
       >
-        <Link color="#FFF" to="/profile">Profile</Link>
+        <Link color="#FFF" to="/session/new">Submit a session</Link>
       </Text>
       <Text
         fontSize="16px"
@@ -69,7 +69,7 @@ export default function Header({ signOut }: { signOut?: () => void; }) {
         position="relative"
         whiteSpace="pre-wrap"
       >
-        <Link color="#FFF" to="/sessions">Talks</Link>
+       <Link color="#FFF" to="/profile">Profile</Link>
       </Text>
     </Flex>
     <Flex

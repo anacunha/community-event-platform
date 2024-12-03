@@ -79,7 +79,6 @@ function Dashboard() {
             <Heading
               level={1}
               textAlign="center"
-
             >
               Welcome to AWS Community Talks!
             </Heading>
@@ -114,14 +113,24 @@ function Dashboard() {
       {({ signOut }) => (
         <main>
           <Header signOut={signOut} />
-          <h1>My Sessions</h1>
-          {sessions.map((session) => (
-            <DataRow key={session.id} session={session} />
-          ))}
+          <Flex
+            gap="24px"
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="center"
+            position="relative"
+            padding="48px"
+            backgroundColor="rgba(255,255,255,1)"
+          >
+            <Heading level={4} color="rgba(105,79,178,1)">Your Sessions</Heading>
+            {sessions.map((session) => (
+              <DataRow key={session.id} session={session} />
+            ))}
+          </Flex>
         </main>
       )}
     </Authenticator>
-  )
+  );
 }
 
 export default Dashboard;

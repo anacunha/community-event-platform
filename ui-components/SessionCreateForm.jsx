@@ -8,6 +8,7 @@ import {
   SelectField,
   SwitchField,
   TextField,
+  TextAreaField,
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
@@ -98,6 +99,7 @@ export default function SessionCreateForm(props) {
   };
   return (
     <Grid
+      width='50vw'
       as="form"
       rowGap="15px"
       columnGap="15px"
@@ -197,11 +199,12 @@ export default function SessionCreateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Description"
         isRequired={false}
         isReadOnly={false}
         value={description}
+        rows={5}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -227,8 +230,8 @@ export default function SessionCreateForm(props) {
         errorMessage={errors.description?.errorMessage}
         hasError={errors.description?.hasError}
         {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
+      ></TextAreaField>
+      <TextAreaField
         label="Additional info"
         isRequired={false}
         isReadOnly={false}
@@ -258,9 +261,9 @@ export default function SessionCreateForm(props) {
         errorMessage={errors.additionalInfo?.errorMessage}
         hasError={errors.additionalInfo?.hasError}
         {...getOverrideProps(overrides, "additionalInfo")}
-      ></TextField>
+      ></TextAreaField>
       <SwitchField
-        label="Accessibility request"
+        label="Are you a person with a disability or do you require accessibility resources?"
         defaultChecked={false}
         isDisabled={false}
         isChecked={accessibilityRequest}
@@ -293,7 +296,7 @@ export default function SessionCreateForm(props) {
         {...getOverrideProps(overrides, "accessibilityRequest")}
       ></SwitchField>
       <SwitchField
-        label="Assistance to attend"
+        label="Do you need assistance to attend the event?"
         defaultChecked={false}
         isDisabled={false}
         isChecked={assistanceToAttend}
@@ -326,7 +329,7 @@ export default function SessionCreateForm(props) {
         {...getOverrideProps(overrides, "assistanceToAttend")}
       ></SwitchField>
       <SwitchField
-        label="Underrepresented"
+        label="Do you belong to an underrepresented in tech group?"
         defaultChecked={false}
         isDisabled={false}
         isChecked={underrepresented}
